@@ -13,12 +13,13 @@ export class DashboardComponent implements OnInit {
   form = new FormGroup({
     name: new FormControl(''),
     roles: new FormControl(''),
-    email:new FormControl('')
+    email: new FormControl(''),
   });
 
   changePasswordForm = new FormGroup({
-    password: new FormControl(''),
-    cpassword: new FormControl(''),
+    currentPassword: new FormControl(''),
+    newPassword: new FormControl(''),
+    confirmPassword: new FormControl(''),
   });
 
   constructor(
@@ -34,8 +35,8 @@ export class DashboardComponent implements OnInit {
     this.form.patchValue({
       name: this.user.name,
       email: this.user.username,
-      roles:this.user.roles
-    })
+      roles: this.user.roles,
+    });
   }
 
   getUserDetails() {
@@ -48,12 +49,31 @@ export class DashboardComponent implements OnInit {
   }
 
   updatePassword() {
-    const data = {};
-    this.userService.changePassword(data).subscribe((res: any) => {});
+    const form = this.changePasswordForm.value;
+    const data = {
+      newPassword: form.newPassword,
+      currentPassword: form.currentPassword,
+      email:this.user?.username
+    };
+
+    if(form.newPassword == form.confirmPassword){ 
+      return this.userService.changePassword(data).subscribe((res: any) => {
+        this.authService.autoSuccess();
+    });
+    }
+    return this.userService.warning('New password and confirm password do not match!');
+   
   }
 
   updateProfile() {
-    const data = {};
-    this.userService.updateUser(data).subscribe((res: any) => {});
+    const form = this.form.value;
+    const data = {
+      name: form.name,
+      email: form.email,
+    };
+    this.userService.updateName(data).subscribe((res: any) => {
+      this.userService.autoSuccess();
+      this.ngOnInit();
+    });
   }
 }

@@ -25,12 +25,13 @@ export class ErrorInterceptor implements HttpInterceptor {
         return error.pipe(
           mergeMap((error, index) => {
             if (error.status === 404) {
-              this.alertService.error('Record not found!');
+              this.alertService.error(error.detail);
               this.loadingService.hide();
                  return '';
             }
-             else if (error.status === 500) {
-                this.alertService.error('Oops something went wrong, try later.');
+            else if (error.status === 500) {
+             
+                this.alertService.error(error.error.detail);
                 this.loadingService.hide();
                 return '';
               } else if (index < maxRetries && error.status !== 200) {

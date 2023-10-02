@@ -17,11 +17,13 @@ export class UserService extends AlertService {
   registerUser(user: any) {
     return this.apis.post('/user', user);
   }
-  updateUser(user: any) {
-    return this.apis.put('/user/update', user);
+  updateName(user: any) {
+    return this.apis.put(`/user/updateName/${user.email}/${user.name}`);
   }
   changePassword(data: any) {
-    return this.apis.put('/user/changePassword', data);
+    return this.apis.put(
+      `/user/updatePassword/${data.email}/${data.currentPassword}/${data.newPassword}`
+    );
   }
   findByUsername(username: any) {
     return this.apis.get('/user/getUserByEmail/' + username);

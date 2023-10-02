@@ -4,15 +4,23 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { UsersComponent } from './users/users.component';
 import { ApplicantsComponent } from './applicants/applicants.component';
 import { TransactionsComponent } from './transactions/transactions.component';
-import { PagesRoutingModule } from './pages.routing';
 import { MaterialModule } from '../material.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './auth/login/login.component';
+import { ResetComponent } from './auth/reset/reset.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    PagesRoutingModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ],
-  declarations: [DashboardComponent, UsersComponent, ApplicantsComponent, TransactionsComponent]
+  declarations: [
+    LoginComponent,
+    ResetComponent,
+    DashboardComponent,
+    UsersComponent,
+    ApplicantsComponent,
+    TransactionsComponent]
 })
 export class PagesModule { }

@@ -1,4 +1,5 @@
 
 
-<app-frame></app-frame>
-<!-- <router-outlet></router-outlet> -->
+<app-frame *ngIf="router.url!='/login' && router.url!='/reset';else login"></app-frame>
+
+<ng-template #login><router-outlet></router-outlet></ng-template>

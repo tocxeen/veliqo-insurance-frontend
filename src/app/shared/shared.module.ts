@@ -7,12 +7,13 @@ import { RouterModule } from '@angular/router';
 import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule
+  imports: [CommonModule, RouterModule],
+  declarations: [
+    FrameComponent,
+    NavbarComponent,
+    SidebarComponent,
+    TableComponent,
   ],
-  declarations: [FrameComponent, NavbarComponent,SidebarComponent, TableComponent],
-  exports: [FrameComponent, NavbarComponent,SidebarComponent, TableComponent],
-  
+  exports: [FrameComponent, NavbarComponent, SidebarComponent, TableComponent],
 })
-export class SharedModule { }
+export class SharedModule {}

@@ -24,7 +24,7 @@ export class UserService extends AlertService {
     return this.apis.put('/user/changePassword', data);
   }
   findByUsername(username: any) {
-    return this.apis.put('/user/findByUsername/' + username);
+    return this.apis.get('/user/getUserByEmail/' + username);
   }
   activatOrDeactivate(data: any) {
     return this.apis.get(`/user/activate/${data.email}`);

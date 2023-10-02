@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ApisService } from './apis.service';
 import { Router } from '@angular/router';
-import jwt_decode from 'jwt-decode';
 import { AlertService } from './alert.service';
 
 @Injectable({ providedIn: 'root' })
@@ -11,49 +10,41 @@ export class AuthService extends AlertService {
   }
 
   login(auth: any) {
-    return this.apis.post('/auth/login', auth);
+    return this.apis.post('/user/generateToken', auth);
   }
 
-  decodeToken(token: any) {
-    sessionStorage.setItem('token', token);
-    const decoded: any = jwt_decode(token);
-    this.setTokenData(decoded);
 
-    if (!decoded.isVerified) {
-      this.error('Your account was de-activated');
-      return null;
-    } else {
-      sessionStorage.setItem('user', JSON.stringify(decoded));
-      this.success('Login successful');
+
+  saveToken(res: any) {
+    sessionStorage.setItem('token', res.token);
+    sessionStorage.setItem('user', JSON.stringify(res));
+    this.autoSuccess();
+
+    this.router.navigateByUrl('/dashboard');
+  }
+
+  getToken() {
+    return sessionStorage.getItem('token');
+  }
+
+  getUser() {
+    let user = sessionStorage.getItem('user');
+    if (user) {
+      return JSON.parse(user);
     }
-  }
-
-  setTokenData(decoded: any) {
-    sessionStorage.setItem('user', JSON.stringify(decoded));
-  }
-
-  getDecodedToken(x: any) {
-    const decoded: any = jwt_decode(x.token);
-    sessionStorage.setItem('token', x.token);
-    sessionStorage.setItem('user', JSON.stringify(decoded));
-    sessionStorage.setItem('role', JSON.stringify(decoded.type));
-    return decoded;
-  }
-
-  goToRoute(route: any) {
-    this.router.navigate([`/${route}`]);
+    return null;
   }
 
   logout() {
     sessionStorage.clear();
-    sessionStorage.clear();
-    this.goToRoute('/');
-    window.location.reload();
+    this.router.navigateByUrl('/');
+    // window.location.reload();
   }
 
-  isLoggedIn(): boolean {
-    const user = sessionStorage.getItem('user');
-    if (user) {
+  isLoggedIn():boolean {
+    const user = sessionStorage.getItem('token');
+   
+    if (user !=null) {
       return true;
     }
     return false;

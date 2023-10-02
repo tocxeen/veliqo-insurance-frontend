@@ -13,10 +13,9 @@ export class DateService {
   formatDate(date:any){
     return moment(date).format('YYYY-MM-DD');
   }
-  
+
   convertDate(timestamop:any){
     return new Date(timestamop).toLocaleString('en-US');
-
   }
 
 }

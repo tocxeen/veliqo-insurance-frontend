@@ -8,6 +8,7 @@ import { MaterialModule } from '../material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './auth/login/login.component';
 import { ResetComponent } from './auth/reset/reset.component';
+import { UserFormComponent } from './users/user-form/user-form.component';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { ResetComponent } from './auth/reset/reset.component';
     ResetComponent,
     DashboardComponent,
     UsersComponent,
+    UserFormComponent,
     ApplicantsComponent,
     TransactionsComponent]
 })

@@ -17,13 +17,13 @@
                 <div class="col-xxl-4 col-md-6">
                     <div class="card info-card sales-card">
                         <div class="card-body">
-                            <h5 class="card-title">Total Users <span>| Today</span></h5>
+                            <h5 class="card-title">Total Users</h5>
                             <div class="d-flex align-items-center">
                                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                    <i class="bi bi-cart"></i>
+                                    <i class="bi bi-people"></i>
                                 </div>
                                 <div class="ps-3">
-                                    <h6>145</h6>
+                                    <h6>{{userNumbers?.total}}</h6>
                                      <span
                                         class="text-muted small pt-2 ps-1">System users</span>
                                 </div>
@@ -35,15 +35,15 @@
                 <div class="col-xxl-4 col-md-6">
                     <div class="card info-card revenue-card">
                      <div class="card-body">
-                            <h5 class="card-title">Active Users <span>| to date</span></h5>
+                            <h5 class="card-title">Administrators </h5>
                             <div class="d-flex align-items-center">
                                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                    <i class="bi bi-currency-dollar"></i>
+                                    <i class="bi bi-people"></i>
                                 </div>
                                 <div class="ps-3">
-                                    <h6>3,264</h6>
+                                    <h6>{{userNumbers?.admin}}</h6>
                                     <span
-                                        class="text-muted small pt-2 ps-1">applicants</span>
+                                        class="text-muted small pt-2 ps-1">users</span>
                                 </div>
                             </div>
                         </div>
@@ -53,14 +53,14 @@
                 <div class="col-xxl-4 col-xl-12">
                     <div class="card info-card customers-card">
                         <div class="card-body">
-                            <h5 class="card-title">In-Active Users <span>| to date</span></h5>
+                            <h5 class="card-title">Total Applicants</h5>
                             <div class="d-flex align-items-center">
                                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                                     <i class="bi bi-people"></i>
                                 </div>
                                 <div class="ps-3">
-                                    <h6>1244</h6>
-                                    <span class="text-muted small pt-2 ps-1">inactive</span>
+                                    <h6>{{userNumbers?.applicants}}</h6>
+                                    <span class="text-muted small pt-2 ps-1">applicants</span>
                                 </div>
                             </div>
                         </div>
@@ -81,57 +81,36 @@
                                         <th scope="col">#</th>
                                         <th scope="col">Full Name</th>
                                         <th scope="col">Email</th>
-                                        <th scope="col">Type</th>
+                                        <th scope="col">Roles</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">More</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row"><a href="#">#2457</a></th>
-                                        <td>Brandon Jacob</td>
-                                        <td><a href="#" class="text-primary">At praesentium minu</a></td>
-                                        <td>$64</td>
-                                        <td><span class="badge bg-success">Approved</span></td>
+                                <tbody *ngIf="users">
+                                    <tr *ngFor="let user of  users; let i=index">
+                                        <th scope="row"><a href="#">#{{i}}</a></th>
+                                        <td>{{user?.name}}</td>
+                                        <td><a href="#" class="text-primary">{{user.username}}</a></td>
+                                        <td>{{user.roles}}</td>
+                                        <td>
+                                         <span class="badge bg-success" *ngIf="user.status=='ACTIVE'">Active</span>
+                                        <span class="badge bg-warning" *ngIf="user.status=='INACTIVE'">Inactive</span>
+                                    </td>
                                         <td><button class="btn btn-sm btn-outline-info"  data-bs-toggle="dropdown">Action <i class="bi bi-three-dots-vertical"></i></button>
                                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                                             
-                                            <li><a class="dropdown-item" href="#">Activate</a></li>
-                                            <li><a class="dropdown-item" href="#">De-Activate</a></li>
-                                            <li><a class="dropdown-item" href="#">Delete</a></li>
-                                            <li><a class="dropdown-item" href="#">Edit</a></li>
+                                            <li><a class="dropdown-item" *ngIf="user.status=='INACTIVE'" (click)="activatOrDeactivate(user.username)">Activate</a></li>
+                                            <li><a class="dropdown-item" *ngIf="user.status=='ACTIVE'" (click)="activatOrDeactivate(user.username)">De-Activate</a></li>
+                                            <li><a class="dropdown-item" (click)="delete(user.username)">Delete</a></li>
+                                            <li><a class="dropdown-item" (click)="openDialog(true, user)">Edit</a></li>
                                         </ul>
                                         
                                         </td>
-
                                     </tr>
+                                </tbody>
+                                <tbody *ngIf="!users">
                                     <tr>
-                                        <th scope="row"><a href="#">#2147</a></th>
-                                        <td>Bridie Kessler</td>
-                                        <td><a href="#" class="text-primary">Blanditiis dolor omnis similique</a></td>
-                                        <td>$47</td>
-                                        <td><span class="badge bg-warning">Pending</span></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row"><a href="#">#2049</a></th>
-                                        <td>Ashleigh Langosh</td>
-                                        <td><a href="#" class="text-primary">At recusandae consectetur</a></td>
-                                        <td>$147</td>
-                                        <td><span class="badge bg-success">Approved</span></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row"><a href="#">#2644</a></th>
-                                        <td>Angus Grady</td>
-                                        <td><a href="#" class="text-primar">Ut voluptatem id earum et</a></td>
-                                        <td>$67</td>
-                                        <td><span class="badge bg-danger">Rejected</span></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row"><a href="#">#2644</a></th>
-                                        <td>Raheem Lehner</td>
-                                        <td><a href="#" class="text-primary">Sunt similique distinctio</a></td>
-                                        <td>$165</td>
-                                        <td><span class="badge bg-success">Approved</span></td>
+                                        <td colspan="6">Oops no data found</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -139,17 +118,17 @@
                         </div>
 
                     </div>
-                </div><!-- End Recent Sales -->
+                </div>
 
 
 
             </div>
-        </div><!-- End Left side columns -->
+        </div>
 
-        <!-- Right side columns -->
+    
         <div class="col-lg-4">
 
-            <!-- Recent Activity -->
+     
             <div iv class="card">
                 <div class="filter">
                     <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>

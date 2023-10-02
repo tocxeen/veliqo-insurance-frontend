@@ -11,11 +11,11 @@ export class UserService extends AlertService {
   }
 
   getAllUsers() {
-    return this.apis.get(`/user/list`);
+    return this.apis.get(`/user/getUsers`);
   }
 
   registerUser(user: any) {
-    return this.apis.post('/user', user);
+    return this.apis.post('/user/add', user);
   }
   updateName(user: any) {
     return this.apis.put(`/user/updateName/${user.email}/${user.name}`);
@@ -28,7 +28,11 @@ export class UserService extends AlertService {
   findByUsername(username: any) {
     return this.apis.get('/user/getUserByEmail/' + username);
   }
-  activatOrDeactivate(data: any) {
-    return this.apis.get(`/user/activate/${data.email}`);
+  activatOrDeactivate(email:string) {
+    return this.apis.put(`/user/updateStatus/${email}`);
+  }
+
+  getNumberOfUsers() {
+    return this.apis.get('/user/numberOfUsers');
   }
 }

@@ -1,0 +1,46 @@
+
+<div class="container-fluid">
+  <div class="row">
+
+    
+      <div class="pt-4 pb-2">
+        <h5 class="card-title text-center pb-0 fs-4">Add User</h5>
+        <p class="text-center small">Fill in the fields below to create a new user</p>
+      </div>
+    
+      <form class="row g-3 needs-validation" novalidate [formGroup]="form" (ngSubmit)="onSubmit()">
+    
+        <div class="col-12">
+          <label for="yourUsername" class="form-label">Full name</label>
+          <div class="input-group has-validation">
+            <input type="text" name="username" class="form-control"  formControlName="name" required>
+            <div class="invalid-feedback">Please enter your name.</div>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <label for="yourUsername" class="form-label">Email</label>
+          <div class="input-group has-validation">
+            <span class="input-group-text" id="inputGroupPrepend">@</span>
+            <input type="email" name="username" class="form-control"  formControlName="username" required>
+            <div class="invalid-feedback">Please enter your username.</div>
+          </div>
+        </div>
+    
+        <div class="col-12">
+          <label for="yourPassword" class="form-label">Password</label>
+          <input type="password" name="password" class="form-control"  formControlName="password" required>
+          <div class="invalid-feedback">Please enter your password!</div>
+        </div>
+    
+    
+        <div class="col-6">
+          <button class="btn btn-primary w-100 mt-3" type="submit">Submit</button>
+        </div>
+        <div class="col-6">
+          <button class="btn btn-outline-danger w-100 mt-3" (click)="close()">Close</button>
+        </div>
+       
+      </form>
+    </div>
+  </div>

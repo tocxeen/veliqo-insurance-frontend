@@ -8,7 +8,7 @@
 
             <div class="d-flex justify-content-center py-4">
               <a class="logo d-flex align-items-center w-auto">
-              
+
                 <span class="d-none d-lg-block">Life-Insurance</span>
               </a>
             </div>
@@ -18,37 +18,44 @@
               <div class="card-body">
 
                 <div class="pt-4 pb-2">
-                  <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
-                  <p class="text-center small">Enter your username & password to login</p>
+                  <h5 class="card-title text-center pb-0 fs-4">Create Applicant Account</h5>
+                  <p class="text-center small">Fill in your details</p>
                 </div>
 
                 <form class="row g-3 needs-validation" novalidate [formGroup]="form" (ngSubmit)="onSubmit()">
 
                   <div class="col-12">
-                    <label for="yourUsername" class="form-label">Username</label>
+                    <label for="name" class="form-label">Name</label>
+                    <input type="name" name="name" class="form-control" formControlName="name" required>
+                    <div class="invalid-feedback">Please enter your name</div>
+                  </div>
+
+                  <div class="col-12">
+                    <label for="yourUsername" class="form-label">Email</label>
                     <div class="input-group has-validation">
                       <span class="input-group-text" id="inputGroupPrepend">@</span>
-                      <input type="text" name="username" class="form-control" id="yourUsername" formControlName="username" required>
+                      <input type="text" name="username" class="form-control" id="yourUsername"
+                        formControlName="username" required>
                       <div class="invalid-feedback">Please enter your username.</div>
                     </div>
                   </div>
 
                   <div class="col-12">
                     <label for="yourPassword" class="form-label">Password</label>
-                    <input type="password" name="password" class="form-control" id="yourPassword" formControlName="password" required>
+                    <input type="password" name="password" class="form-control" id="yourPassword"
+                      formControlName="password" required>
                     <div class="invalid-feedback">Please enter your password!</div>
                   </div>
 
                   <div class="col-12">
-                    <button class="btn btn-primary w-100 mt-3" type="submit">Login</button>
+                    <button class="btn btn-primary w-100 mt-3" type="submit">Create Account</button>
                   </div>
                   <div class="col-12">
-                    <p class="small mb-0">Forgot Password? <a routerLink="/reset" >Reset</a></p>
+                    <p>Already have an account? <a routerLink="/login">Login</a> </p>
+                    
                   </div>
+                
                 </form>
-                <div class="col-12">
-                  <button class="btn btn-outline-info w-100 mt-3" routerLink="/app-create">Create Applicant Account</button>
-                </div>
               </div>
             </div>
           </div>

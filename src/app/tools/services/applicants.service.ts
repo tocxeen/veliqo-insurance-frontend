@@ -15,11 +15,13 @@ export class Applicantservice extends AlertService {
   }
 
   registerApplicant(data: any) {
-    return this.apis.post('/applicant', data);
+    return this.apis.post('/applicant/registerApplicantAccount', data);
   }
+
   updateApplicant(data: any) {
     return this.apis.put('/applicant/update', data);
   }
+
   findByUsername(username: any) {
     return this.apis.put('/applicant/findByUsername/' + username);
   }

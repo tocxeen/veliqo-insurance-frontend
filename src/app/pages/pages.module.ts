@@ -11,13 +11,11 @@ import { ResetComponent } from './auth/reset/reset.component';
 import { UserFormComponent } from './users/user-form/user-form.component';
 import { PolicyComponent } from './policy/policy.component';
 import { PolicyFormComponent } from './policy/policy-form/policy-form.component';
+import { RouterModule } from '@angular/router';
+import { AppCreateComponent } from './auth/app-create/app-create.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    MaterialModule,
-    ReactiveFormsModule
-  ],
+  imports: [CommonModule, MaterialModule,RouterModule, ReactiveFormsModule],
   declarations: [
     LoginComponent,
     ResetComponent,
@@ -27,7 +25,9 @@ import { PolicyFormComponent } from './policy/policy-form/policy-form.component'
     ApplicantsComponent,
     TransactionsComponent,
     PolicyComponent,
-    PolicyFormComponent
-  ]
+    PolicyFormComponent,
+    ApplicantsComponent,
+    AppCreateComponent
+  ],
 })
-export class PagesModule { }
+export class PagesModule {}

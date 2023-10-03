@@ -7,6 +7,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { TransactionsComponent } from './pages/transactions/transactions.component';
 import { UsersComponent } from './pages/users/users.component';
 import { PolicyComponent } from './pages/policy/policy.component';
+import { AppCreateComponent } from './pages/auth/app-create/app-create.component';
 
 const routes: Routes = [
   { path: 'applicants', component: ApplicantsComponent },
@@ -19,6 +20,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'reset', component: ResetComponent },
   { path: 'policy', component: PolicyComponent },
+  { path: 'applicant', component: ApplicantsComponent },
+  { path: 'app-create', component: AppCreateComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
 ];
 

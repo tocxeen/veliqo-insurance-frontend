@@ -11,7 +11,7 @@ export class SidebarComponent implements OnInit {
     { title: 'Users', icon: 'bi-people', link: '/users' },
     { title: 'Applicants', icon: 'bi-person', link: '/applicants' },
     { title: 'Transactions', icon: 'bi-coin', link: '/transactions' },
-    { title: 'Other', icon: '', link: 'other' },
+    { title: 'Policies', icon: 'bi-book', link: '/policy' },
   ];
   constructor() {}
 

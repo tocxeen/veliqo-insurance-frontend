@@ -4,8 +4,11 @@
 
     
       <div class="pt-4 pb-2">
-        <h5 class="card-title text-center pb-0 fs-4">Add User</h5>
-        <p class="text-center small">Fill in the fields below to create a new user</p>
+        <h5 class="card-title text-center pb-0 fs-4" *ngIf="!data.edit">Add User</h5>
+        <h5 class="card-title text-center pb-0 fs-4" *ngIf="data.edit">Edit User</h5>
+        <p class="text-center small" *ngIf="!data.edit">Fill in the fields below to create a new user</p>
+        <p class="text-center small" *ngIf="data.edit">Some of the fieds cannot be editable </p>
+
       </div>
     
       <form class="row g-3 needs-validation" novalidate [formGroup]="form" (ngSubmit)="onSubmit()">

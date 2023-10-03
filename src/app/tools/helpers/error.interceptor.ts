@@ -31,7 +31,7 @@ export class ErrorInterceptor implements HttpInterceptor {
                 this.alertService.warning('Kindly update your profile');
                 return '';
               }
-              this.alertService.error(error.detail);
+              this.alertService.error(error.error.detail);
               this.loadingService.hide();
                  return '';
             }

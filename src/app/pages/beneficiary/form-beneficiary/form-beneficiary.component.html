@@ -16,24 +16,29 @@
         <label for="yourUsername" class="form-label">Name</label>
         <div class="input-group has-validation">
           <input type="text" name="name" class="form-control" formControlName="name" required [readOnly]="data.edit">
-          <div class="invalid-feedback">Please enter  name.</div>
+          <div class="invalid-feedback">Please enter name.</div>
         </div>
       </div>
 
-        <div class="col-12">
-          <label for="currency" class="form-label">Currency</label>
-          <div class="input-group has-validation">
-            <input type="text" name="currency" class="form-control" formControlName="currency" required>
-            <div class="invalid-feedback">Please enter currency.</div>
-          </div>
-        </div>
-
       <div class="col-12">
-        <label for="yourUsername" class="form-label">Amount</label>
+        <label  class="form-label">Email</label>
         <div class="input-group has-validation">
-          <input type="number" min="1" name="amount" class="form-control" formControlName="amount" required
-           >
-          <div class="invalid-feedback">Please enter  amount.</div>
+          <input type="text" class="form-control" formControlName="email" required>
+          <div class="invalid-feedback">Please enter email.</div>
+        </div>
+      </div>
+      <div class="col-12">
+        <label class="form-label">Phonenumber</label>
+        <div class="input-group has-validation">
+          <input type="text" class="form-control" formControlName="phoneNumber" required>
+          <div class="invalid-feedback">Please enter phoneNumber.</div>
+        </div>
+      </div>
+      <div class="col-12">
+        <label class="form-label">National ID</label>
+        <div class="input-group has-validation">
+          <input type="text" class="form-control" formControlName="nationalID" required>
+          <div class="invalid-feedback">Please enter id.</div>
         </div>
       </div>
 

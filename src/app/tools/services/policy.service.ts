@@ -17,5 +17,9 @@ export class PolicyService extends AlertService {
   addPolicy(policy: any) {
     return this.apis.post('/policy/register', policy);
   }
+
+    updatePolicy(policy: any) {
+    return this.apis.put('/policy/update', policy);
+  }
   
 }

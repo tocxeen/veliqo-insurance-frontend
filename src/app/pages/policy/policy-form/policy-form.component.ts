@@ -12,7 +12,8 @@ import { PolicyService } from 'src/app/tools/services';
 export class PolicyFormComponent implements OnInit {
   form = new FormGroup({
     name: new FormControl(''),
-    amount:new FormControl('')
+    amount: new FormControl(''),
+    currency:new FormControl('')
   });
 
   constructor(
@@ -22,15 +23,31 @@ export class PolicyFormComponent implements OnInit {
     private policyService:PolicyService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (this.data.edit) {
+      this.form.patchValue({
+        name: this.data.data.name,
+        amount: this.data.data.amount,
+        currency: this.data.data.currency
+      });
+    }
+  }
 
   close(): void {
     this.dialogRef.close(false);
   }
 
   onSubmit() {
-    this.policyService.addPolicy(this.form.value).subscribe((res: any) => {
-      this.policyService.autoSuccess();
-    })
+    !this.data.edit
+      ? this.policyService.addPolicy(this.form.value).subscribe((res: any) => {
+          this.policyService.autoSuccess();
+          this.dialogRef.close(true);
+        })
+      : this.policyService
+          .updatePolicy(this.form.value)
+          .subscribe((res: any) => {
+            this.policyService.autoSuccess();
+            this.dialogRef.close(true);
+          });
   }
 }

@@ -13,9 +13,13 @@ import { PolicyComponent } from './policy/policy.component';
 import { PolicyFormComponent } from './policy/policy-form/policy-form.component';
 import { RouterModule } from '@angular/router';
 import { AppCreateComponent } from './auth/app-create/app-create.component';
+import { BeneficiaryComponent } from './beneficiary/beneficiary.component';
+import { FormBeneficiaryComponent } from './beneficiary/form-beneficiary/form-beneficiary.component';
+import { PlanFormComponent } from './plan/plan-form/plan-form.component';
+import { PlanComponent } from './plan/plan.component';
 
 @NgModule({
-  imports: [CommonModule, MaterialModule,RouterModule, ReactiveFormsModule],
+  imports: [CommonModule, MaterialModule, RouterModule, ReactiveFormsModule],
   declarations: [
     LoginComponent,
     ResetComponent,
@@ -27,7 +31,11 @@ import { AppCreateComponent } from './auth/app-create/app-create.component';
     PolicyComponent,
     PolicyFormComponent,
     ApplicantsComponent,
-    AppCreateComponent
+    AppCreateComponent,
+    BeneficiaryComponent,
+    FormBeneficiaryComponent,
+    PlanFormComponent,
+    PlanComponent,
   ],
 })
 export class PagesModule {}

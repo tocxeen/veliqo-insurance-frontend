@@ -8,6 +8,8 @@ import { TransactionsComponent } from './pages/transactions/transactions.compone
 import { UsersComponent } from './pages/users/users.component';
 import { PolicyComponent } from './pages/policy/policy.component';
 import { AppCreateComponent } from './pages/auth/app-create/app-create.component';
+import { BeneficiaryComponent } from './pages/beneficiary/beneficiary.component';
+import { PlanComponent } from './pages/plan/plan.component';
 
 const routes: Routes = [
   { path: 'applicants', component: ApplicantsComponent },
@@ -22,6 +24,9 @@ const routes: Routes = [
   { path: 'policy', component: PolicyComponent },
   { path: 'applicant', component: ApplicantsComponent },
   { path: 'app-create', component: AppCreateComponent },
+  { path: 'beneficiary', component: BeneficiaryComponent },
+  { path: 'plan', component: PlanComponent },
+
   { path: '', redirectTo: 'login', pathMatch: 'full' },
 ];
 

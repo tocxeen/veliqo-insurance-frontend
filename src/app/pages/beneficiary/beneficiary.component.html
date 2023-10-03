@@ -1,0 +1,86 @@
+<div class="pagetitle">
+  <h1>Beneficiaries</h1>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/dashboard">Dashboard</a></li>
+      <li class="breadcrumb-item active">Beneficiaries</li>
+    </ol>
+  </nav>
+</div>
+
+<section class="section dashboard">
+  <div class="row">
+
+    <div class="col-lg-8">
+      <div class="row">
+
+        <div class="col-12">
+          <div class="card recent-sales overflow-auto">
+
+            <div class="card-body">
+              <h5 class="card-title">Beneficiaries List <span>| as of to date</span></h5>
+
+              <table class="table table-borderless datatable">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">National ID</th>
+                    <th scope="col">Phone Number</th>
+                    <th scope="col">More</th>
+                  </tr>
+                </thead>
+                <tbody *ngIf="beneficiaries">
+                  <tr *ngFor="let beneficiary of  beneficiaries; let i=index">
+                    <th scope="row"><a>#{{i}}</a></th>
+                    <td>{{beneficiary?.name}}</td>
+                    <td>{{beneficiary?.email}}</td>
+                    <td>{{beneficiary?.nationalID}}</td>
+                    <td>{{beneficiary?.phoneNumber}}</td>
+
+                    <td><button class="btn btn-sm btn-outline-info" data-bs-toggle="dropdown">Action <i
+                          class="bi bi-three-dots-vertical"></i></button>
+                      <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                        <li><a class="dropdown-item" (click)="openDialog(true, beneficiary)">Edit</a></li>
+                      </ul>
+
+                    </td>
+                  </tr>
+                </tbody>
+                <tbody *ngIf="!beneficiaries">
+                  <tr>
+                    <td colspan="6">Oops no data found</td>
+                  </tr>
+                </tbody>
+              </table>
+
+            </div>
+
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+
+
+    <div class="col-lg-4">
+
+
+      <div iv class="card">
+
+        <div class="card-body">
+          <h5 class="card-title">Add New Beneficiary</h5>
+
+          <div class="activity">
+            <button class="btn btn-info btn-block" (click)="openDialog(false)">Add Beneficiary</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>

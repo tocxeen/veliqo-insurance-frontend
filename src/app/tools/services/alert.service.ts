@@ -13,7 +13,6 @@ export class AlertService extends LoaderService {
       title: 'Success',
       icon: 'success',
       text: message,
-      showCancelButton: true,
     });
   }
 
@@ -22,7 +21,6 @@ export class AlertService extends LoaderService {
       title: 'Warning',
       icon: 'warning',
       text: message,
-      showCancelButton: true,
     });
   }
 
@@ -31,7 +29,6 @@ export class AlertService extends LoaderService {
       title: 'Error',
       icon: 'error',
       text: message,
-      showCancelButton: true,
     });
   }
 

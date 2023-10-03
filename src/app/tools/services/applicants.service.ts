@@ -5,7 +5,7 @@ import { ApisService } from './apis.service';
 @Injectable({
   providedIn: 'root',
 })
-export class Applicantservice extends AlertService {
+export class ApplicantsService extends AlertService {
   constructor(private apis: ApisService) {
     super();
   }
@@ -14,8 +14,12 @@ export class Applicantservice extends AlertService {
     return this.apis.get(`/applicant/list`);
   }
 
-  registerApplicant(data: any) {
+  registerApplicantAccount(data: any) {
     return this.apis.post('/applicant/registerApplicantAccount', data);
+  }
+
+  registerApplicant(data: any) {
+    return this.apis.post('/applicant/register', data);
   }
 
   updateApplicant(data: any) {
@@ -23,7 +27,6 @@ export class Applicantservice extends AlertService {
   }
 
   findByUsername(username: any) {
-    return this.apis.put('/applicant/findByUsername/' + username);
+    return this.apis.get('/applicant/getApplicantByEmail/'+username);
   }
-
 }

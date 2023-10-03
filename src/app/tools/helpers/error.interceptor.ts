@@ -25,6 +25,12 @@ export class ErrorInterceptor implements HttpInterceptor {
         return error.pipe(
           mergeMap((error, index) => {
             if (error.status === 404) {
+              if (
+                error.error.instance.includes('applicant/getApplicantByEmail')
+              ) {
+                this.alertService.warning('Kindly update your profile');
+                return '';
+              }
               this.alertService.error(error.detail);
               this.loadingService.hide();
                  return '';

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { Applicantservice } from 'src/app/tools/services';
+import { ApplicantsService } from 'src/app/tools/services';
 
 @Component({
   selector: 'app-app-create',
@@ -17,7 +17,7 @@ export class AppCreateComponent implements OnInit {
     password: new FormControl(''),
   });
 
-  constructor(private applicantService: Applicantservice) {}
+  constructor(private applicantService: ApplicantsService) {}
 
   ngOnInit() {}
 
@@ -28,8 +28,10 @@ export class AppCreateComponent implements OnInit {
       roles: 'ROLE_APPLICANT',
     };
 
-    this.applicantService.registerApplicant(data).subscribe((res: any) => {
-      this.applicantService.autoSuccess();
-    });
+    this.applicantService
+      .registerApplicantAccount(data)
+      .subscribe((res: any) => {
+        this.applicantService.autoSuccess();
+      });
   }
 }

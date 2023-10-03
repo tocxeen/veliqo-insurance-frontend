@@ -101,7 +101,6 @@
                                             
                                             <li><a class="dropdown-item" *ngIf="user.status=='INACTIVE'" (click)="activatOrDeactivate(user.username)">Activate</a></li>
                                             <li><a class="dropdown-item" *ngIf="user.status=='ACTIVE'" (click)="activatOrDeactivate(user.username)">De-Activate</a></li>
-                                            <li><a class="dropdown-item" (click)="delete(user.username)">Delete</a></li>
                                             <li><a class="dropdown-item" (click)="openDialog(true, user)">Edit</a></li>
                                         </ul>
                                         

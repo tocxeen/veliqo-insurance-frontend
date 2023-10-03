@@ -29,7 +29,20 @@ export class UserFormComponent implements OnInit {
   close(): void {
     this.dialogRef.close(false);
   }
-  ngOnInit() {}
+  ngOnInit() {
+    if (this.data.edit) {
+      this.updateInit();
+    }
+  }
+
+  updateInit() {
+    this.form.patchValue({
+      name: this.data.data.name,
+      username: this.data.data.username,
+      roles: this.data.data.roles,
+      password:'************************'
+    })
+  }
 
   onSubmit() {
 
@@ -38,10 +51,20 @@ export class UserFormComponent implements OnInit {
       roles: 'ROLE_ADMIN',
       status:'ACTIVE'
     };
+    const data = {
+      name: this.form.value.name,
+      email: this.form.value.username,
+    };
 
+    this.data.edit ?
+      this.userService.updateName(data).subscribe((res: any) => {
+        this.userService.autoSuccess();
+        this.dialogRef.close(true);
+      })
+    :
     this.userService.registerUser(user).subscribe((res: any) => {
       this.userService.autoSuccess();
-      this.close();
-    })
+      this.dialogRef.close(true);
+    });
   }
 }

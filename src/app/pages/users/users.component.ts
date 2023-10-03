@@ -41,19 +41,20 @@ export class UsersComponent implements OnInit {
     });
   }
 
-  delete(username: string) {
-    this.userService.activatOrDeactivate(username).subscribe((res: any) => {
-      this.authService.autoSuccess();
-      this.ngOnInit();
-    });
-  }
+ 
 
   openDialog(edit: boolean, data?: any) {
+   
+   
     const dialogRef = this.dialog.open(UserFormComponent, {
       width: '500px',
       height: '100vh',
       disableClose: true,
       position: { right: '0px' },
+      data: {
+        edit,
+        data,
+      },
     });
     dialogRef.afterClosed().subscribe((res: any) => {
       if (res) {

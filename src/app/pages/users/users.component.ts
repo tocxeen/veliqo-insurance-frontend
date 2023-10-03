@@ -44,8 +44,7 @@ export class UsersComponent implements OnInit {
  
 
   openDialog(edit: boolean, data?: any) {
-   
-   
+  
     const dialogRef = this.dialog.open(UserFormComponent, {
       width: '500px',
       height: '100vh',

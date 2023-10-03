@@ -6,18 +6,19 @@ import { ResetComponent } from './pages/auth/reset/reset.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { TransactionsComponent } from './pages/transactions/transactions.component';
 import { UsersComponent } from './pages/users/users.component';
-
+import { PolicyComponent } from './pages/policy/policy.component';
 
 const routes: Routes = [
   { path: 'applicants', component: ApplicantsComponent },
   {
     path: 'dashboard',
-    component: DashboardComponent
+    component: DashboardComponent,
   },
   { path: 'transactions', component: TransactionsComponent },
   { path: 'users', component: UsersComponent },
   { path: 'login', component: LoginComponent },
   { path: 'reset', component: ResetComponent },
+  { path: 'policy', component: PolicyComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
 ];
 

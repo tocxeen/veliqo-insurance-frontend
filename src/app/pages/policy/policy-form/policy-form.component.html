@@ -1,0 +1,43 @@
+<div class="container-fluid">
+  <div class="row">
+
+
+    <div class="pt-4 pb-2">
+      <h5 class="card-title text-center pb-0 fs-4" *ngIf="!data.edit">Add Policy</h5>
+      <h5 class="card-title text-center pb-0 fs-4" *ngIf="data.edit">Edit Policy</h5>
+      <p class="text-center small" *ngIf="!data.edit">Fill in the fields below to create a new policy</p>
+      <p class="text-center small" *ngIf="data.edit">Some of the fieds cannot be editable </p>
+
+    </div>
+
+    <form class="row g-3 needs-validation" novalidate [formGroup]="form" (ngSubmit)="onSubmit()">
+
+      <div class="col-12">
+        <label for="yourUsername" class="form-label">Name</label>
+        <div class="input-group has-validation">
+          <input type="text" name="name" class="form-control" formControlName="name" required>
+          <div class="invalid-feedback">Please enter  name.</div>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <label for="yourUsername" class="form-label">Amount</label>
+        <div class="input-group has-validation">
+          <input type="number" min="1" name="amount" class="form-control" formControlName="amount" required
+           >
+          <div class="invalid-feedback">Please enter  amount.</div>
+        </div>
+      </div>
+
+
+
+      <div class="col-6">
+        <button class="btn btn-primary w-100 mt-3" type="submit">Submit</button>
+      </div>
+      <div class="col-6">
+        <button class="btn btn-outline-danger w-100 mt-3" (click)="close()">Close</button>
+      </div>
+
+    </form>
+  </div>
+</div>

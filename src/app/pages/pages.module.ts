@@ -9,6 +9,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './auth/login/login.component';
 import { ResetComponent } from './auth/reset/reset.component';
 import { UserFormComponent } from './users/user-form/user-form.component';
+import { PolicyComponent } from './policy/policy.component';
+import { PolicyFormComponent } from './policy/policy-form/policy-form.component';
 
 @NgModule({
   imports: [
@@ -23,6 +25,9 @@ import { UserFormComponent } from './users/user-form/user-form.component';
     UsersComponent,
     UserFormComponent,
     ApplicantsComponent,
-    TransactionsComponent]
+    TransactionsComponent,
+    PolicyComponent,
+    PolicyFormComponent
+  ]
 })
 export class PagesModule { }

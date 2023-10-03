@@ -5,3 +5,4 @@ export * from './date.service';
 export * from './auth.service';
 export * from './user.service';
 export * from './loader.service';
+export * from './policy.service';

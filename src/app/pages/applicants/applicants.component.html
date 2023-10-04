@@ -1,5 +1,5 @@
 <div class="pagetitle">
-    <h1>Applicantss</h1>
+    <h1>Applicants</h1>
     <nav>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a routerLink="/dashboard">Dashboard</a></li>
@@ -11,7 +11,7 @@
 <section class="section dashboard">
     <div class="row">
 
-        <div class="col-lg-8">
+        <div class="col-lg-12">
             <div class="row">
 
                 <div class="col-12">
@@ -37,14 +37,13 @@
                                 <tbody *ngIf="applicants">
                                     <tr *ngFor="let applicant of  applicants; let i=index">
                                         <th scope="row"><a>#{{i}}</a></th>
-                                        <td *ngIf="!applicant?.sex">{{applicant?.email}}</td>
-                                        <td *ngIf="!applicant?.sex">{{applicant?.sex}}</td>
-                                        <td *ngIf="!applicant?.sex">{{applicant?.dob}}</td>
-                                        <td *ngIf="!applicant?.sex">{{applicant?.status}}</td>
-                                        <td *ngIf="!applicant?.sex">{{applicant?.street}}</td>
-                                        <td *ngIf="!applicant?.sex">{{applicant?.city}}</td>
-                                        <td *ngIf="!applicant?.sex">{{applicant?.country}}</td>
-                                        <td *ngIf="!applicant?.sex" rowspan="3">The applicant has not yet updated the profil</td>
+                                        <td>{{applicant?.email}}</td>
+                                        <td>{{applicant?.sex}}</td>
+                                        <td>{{applicant?.dob}}</td>
+                                        <td>{{applicant?.status}}</td>
+                                        <td>{{applicant?.street}}</td>
+                                        <td>{{applicant?.city}}</td>
+                                        <td>{{applicant?.country}}</td>
 
                                         <td><button class="btn btn-sm btn-outline-info" data-bs-toggle="dropdown">Action
                                                 <i class="bi bi-three-dots-vertical"></i></button>

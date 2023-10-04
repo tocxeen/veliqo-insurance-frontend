@@ -19,6 +19,8 @@ import { PlanFormComponent } from './plan/plan-form/plan-form.component';
 import { PlanComponent } from './plan/plan.component';
 import { PlanBeneficiaryComponent } from './plan/plan-beneficiary/plan-beneficiary.component';
 import { PlanPolicyComponent } from './plan/plan-policy/plan-policy.component';
+import { ApplicantBeneficiaryComponent } from './applicants/applicant-beneficiary/applicant-beneficiary.component';
+import { ApplicantPlanComponent } from './applicants/applicant-plan/applicant-plan.component';
 
 @NgModule({
   imports: [CommonModule, MaterialModule, RouterModule, ReactiveFormsModule],
@@ -40,6 +42,8 @@ import { PlanPolicyComponent } from './plan/plan-policy/plan-policy.component';
     PlanComponent,
     PlanBeneficiaryComponent,
     PlanPolicyComponent,
+    ApplicantBeneficiaryComponent,
+    ApplicantPlanComponent
   ],
 })
 export class PagesModule {}

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBeneficiaryComponent } from './form-beneficiary/form-beneficiary.component';
-import { BeneficiaryService } from 'src/app/tools/services';
+import { AuthService, BeneficiaryService } from 'src/app/tools/services';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -13,7 +13,8 @@ export class BeneficiaryComponent implements OnInit {
   
   constructor(
     private beneficiaryService: BeneficiaryService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private authService:AuthService
   ) {}
 
   ngOnInit() {
@@ -21,7 +22,7 @@ export class BeneficiaryComponent implements OnInit {
   }
 
   getAllBeneficiaries() {
-    this.beneficiaryService.getAllBeneficiaries().subscribe((res: any) => {
+    this.beneficiaryService.getApplicantBeneficiaries(this.authService.getUser()?.username).subscribe((res: any) => {
       this.beneficiaries = res;
     });
   }

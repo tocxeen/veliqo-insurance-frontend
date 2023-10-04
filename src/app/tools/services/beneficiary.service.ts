@@ -17,11 +17,17 @@ export class BeneficiaryService extends AlertService {
   getAllBeneficiaryByEmail(email: string) {
     return this.apis.get(`/beneficiary/getBeneficiaryByEmail/${email}`);
   }
+  getApplicantBeneficiaries(email: string) {
+    return this.apis.get(`/beneficiary/getApplicantBeneficiaries/${email}`);
+  }
 
   addBeneficiary(data: any) {
     return this.apis.post(`/beneficiary/register`, data);
   }
   updateBeneficiary(data: any) {
     return this.apis.put(`/beneficiary/update`, data);
+  }
+  getAllBeneficiaryById(id: string) {
+    return this.apis.get(`/beneficiary/getBeneficiariesByPlanID/${id}`);
   }
 }

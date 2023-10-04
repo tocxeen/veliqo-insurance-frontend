@@ -1,4 +1,12 @@
-
+<div class="loader" *ngIf="loadingService.isLoading.getValue()">
+    <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+           
+        </div>
+        <br>
+       
+    </div>
+</div>
 
 <app-frame *ngIf="router.url!='/login' && router.url!='/reset'  && router.url!='/app-create';else login"></app-frame>
 

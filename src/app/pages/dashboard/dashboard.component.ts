@@ -33,7 +33,7 @@ export class DashboardComponent implements OnInit {
     dob: new FormControl(''),
     sex: new FormControl(''),
     marriageStatus: new FormControl(''),
-    balance: new FormControl('0')
+    balance: new FormControl('0'),
   });
 
   constructor(
@@ -44,7 +44,9 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUserDetails();
-    this.getApplicantDetails();
+    if (this.authService.getUser()?.roles == 'ROLE_APPLICANT') {
+      this.getApplicantDetails();
+    }
   }
 
   setFields() {

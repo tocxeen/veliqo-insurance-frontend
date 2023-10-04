@@ -7,7 +7,7 @@
                 <li class="breadcrumb-item active">Profile</li>
             </ol>
         </nav>
-    </div><!-- End Page Title -->
+    </div>
 
     <section class="section profile">
         <div class="row">
@@ -16,7 +16,7 @@
                 <div class="card">
                     <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
-                        <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpbF9MRc872DyqrFDJJ3MRq68r08IaEKCNGzAqYNpeSK38HOao_E2_50CtB2V4TGM_5ag&usqp=CAU" alt="Profile" class="rounded-circle">
                         <h2>{{user?.name}}</h2>
                         <h3>{{user?.username}}</h3>
                        
@@ -39,7 +39,7 @@
                                 <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Account</button>
                             </li>
 
-                            <li class="nav-item">
+                            <li class="nav-item" *ngIf="authService.getUser()?.roles === 'ROLE_APPLICANT'">
                                 <button class="nav-link" data-bs-toggle="tab" data-bs-target="#applicant-data">Applicant Profile</button>
                             </li>
 
@@ -69,8 +69,8 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Role</div>
-                                    <div class="col-lg-9 col-md-8" *ngIf="user.roles =='ROLE_ADMIN'">Admin</div>
-                                    <div class="col-lg-9 col-md-8" *ngIf="user.roles =='ROLE_APPLICANT'">Applicant</div>
+                                    <div class="col-lg-9 col-md-8" *ngIf="user?.roles =='ROLE_ADMIN'">Admin</div>
+                                    <div class="col-lg-9 col-md-8" *ngIf="user?.roles =='ROLE_APPLICANT'">Applicant</div>
                                 </div>
 
 

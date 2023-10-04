@@ -1,1 +1,81 @@
-<p>applicants works!</p>
+<div class="pagetitle">
+    <h1>Applicantss</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/dashboard">Dashboard</a></li>
+            <li class="breadcrumb-item active">Applicants</li>
+        </ol>
+    </nav>
+</div>
+
+<section class="section dashboard">
+    <div class="row">
+
+        <div class="col-lg-8">
+            <div class="row">
+
+                <div class="col-12">
+                    <div class="card recent-sales overflow-auto">
+
+                        <div class="card-body">
+                            <h5 class="card-title">Applicants List <span>| as of to date</span></h5>
+
+                            <table class="table table-borderless datatable">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Applicant Email</th>
+                                        <th scope="col">Sex</th>
+                                        <th scope="col">DOB</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Street</th>
+                                        <th scope="col">City</th>
+                                        <th scope="col">Country</th>
+                                        <th scope="col">More</th>
+                                    </tr>
+                                </thead>
+                                <tbody *ngIf="applicants">
+                                    <tr *ngFor="let applicant of  applicants; let i=index">
+                                        <th scope="row"><a>#{{i}}</a></th>
+                                        <td *ngIf="!applicant?.sex">{{applicant?.email}}</td>
+                                        <td *ngIf="!applicant?.sex">{{applicant?.sex}}</td>
+                                        <td *ngIf="!applicant?.sex">{{applicant?.dob}}</td>
+                                        <td *ngIf="!applicant?.sex">{{applicant?.status}}</td>
+                                        <td *ngIf="!applicant?.sex">{{applicant?.street}}</td>
+                                        <td *ngIf="!applicant?.sex">{{applicant?.city}}</td>
+                                        <td *ngIf="!applicant?.sex">{{applicant?.country}}</td>
+                                        <td *ngIf="!applicant?.sex" rowspan="3">The applicant has not yet updated the profil</td>
+
+                                        <td><button class="btn btn-sm btn-outline-info" data-bs-toggle="dropdown">Action
+                                                <i class="bi bi-three-dots-vertical"></i></button>
+                                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                             
+                                                <li><a class="dropdown-item"
+                                                        (click)="openApplicantPlans(applicant?.email)">View Plans</a>
+                                                </li>
+                                                <li><a class="dropdown-item" (click)="openApplicantBeneficiary(applicant?.email)">View
+                                                        Beneficiaries</a></li>
+                                            </ul>
+
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tbody *ngIf="!applicants">
+                                    <tr>
+                                        <td colspan="6">Oops no data found</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+    </div>
+</section>

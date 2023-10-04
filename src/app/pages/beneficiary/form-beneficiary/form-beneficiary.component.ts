@@ -10,18 +10,18 @@ import { AuthService, BeneficiaryService } from 'src/app/tools/services';
   styleUrls: ['./form-beneficiary.component.css'],
 })
 export class FormBeneficiaryComponent implements OnInit {
-  
+
   form = new FormGroup({
     name: new FormControl(''),
     email: new FormControl(''),
     phoneNumber: new FormControl(''),
     nationalID: new FormControl(''),
-    applicantID:new FormControl('')
+    applicantEmail:new FormControl('')
   });
 
   constructor(
     public dialog: MatDialog,
-    public dialogRef: MatDialogRef<UserFormComponent>,
+    public dialogRef: MatDialogRef<FormBeneficiaryComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private beneficiaryService: BeneficiaryService,
     public authService: AuthService,
@@ -45,7 +45,7 @@ export class FormBeneficiaryComponent implements OnInit {
   onSubmit() {
     const data = {
       ...this.form.value,
-      applicantID:this.authService.getUser()?.username
+      applicantEmail:this.authService.getUser()?.username
     }
     !this.data.edit
       ? this.beneficiaryService.addBeneficiary(data).subscribe((res: any) => {

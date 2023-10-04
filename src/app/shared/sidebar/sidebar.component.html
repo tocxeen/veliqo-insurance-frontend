@@ -8,11 +8,14 @@
         </a>
       </li>
       <li class="nav-heading">Pages</li>
-      <li class="nav-item" *ngFor="let page of sideBar">
+      <div *ngFor="let page of sideBar">
+        <li class="nav-item" *ngIf="page.role.includes(authService.getUser()?.roles)" >
         <a class="nav-link" [routerLink]="page.link" routerLinkActive="active">
           <i [class]="'bi '+ page.icon"></i>
           <span>{{page.title}}</span>
         </a>
       </li>
+      </div>
+      
     </ul>
   </aside>

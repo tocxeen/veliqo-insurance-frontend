@@ -13,6 +13,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { JwtInterceptor, ErrorInterceptor } from './tools/helpers';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from './material.module';
+import { LoaderInterceptor } from './tools/helpers/loader.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,22 +29,18 @@ import { MaterialModule } from './material.module';
   ],
   providers: [
     AlertService,
-  
-    // AuthGuard,
     {
       provide: LocationStrategy,
       useClass: HashLocationStrategy,
     },
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: LoaderInterceptor,
-    //   multi: true,
-    // },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptor,
+      multi: true,
+    },
     { provide: 'baseUrl', useValue: environment.apiUrl },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    // { provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptor, multi: true },
-    // { provide: HTTP_INTERCEPTORS, useClass: CacheInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })

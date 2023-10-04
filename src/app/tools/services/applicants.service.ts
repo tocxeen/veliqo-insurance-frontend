@@ -11,7 +11,7 @@ export class ApplicantsService extends AlertService {
   }
 
   getAllApplicants() {
-    return this.apis.get(`/applicant/list`);
+    return this.apis.get(`/applicant/getApplicants`);
   }
 
   registerApplicantAccount(data: any) {

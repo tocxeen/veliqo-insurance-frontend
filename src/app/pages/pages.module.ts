@@ -17,6 +17,8 @@ import { BeneficiaryComponent } from './beneficiary/beneficiary.component';
 import { FormBeneficiaryComponent } from './beneficiary/form-beneficiary/form-beneficiary.component';
 import { PlanFormComponent } from './plan/plan-form/plan-form.component';
 import { PlanComponent } from './plan/plan.component';
+import { PlanBeneficiaryComponent } from './plan/plan-beneficiary/plan-beneficiary.component';
+import { PlanPolicyComponent } from './plan/plan-policy/plan-policy.component';
 
 @NgModule({
   imports: [CommonModule, MaterialModule, RouterModule, ReactiveFormsModule],
@@ -36,6 +38,8 @@ import { PlanComponent } from './plan/plan.component';
     FormBeneficiaryComponent,
     PlanFormComponent,
     PlanComponent,
+    PlanBeneficiaryComponent,
+    PlanPolicyComponent,
   ],
 })
 export class PagesModule {}

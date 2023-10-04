@@ -1,3 +1,53 @@
-<p>
-  plan-form works!
-</p>
+<div class="container-fluid p-3">
+  <div class="row">
+
+
+    <div class="pt-4 pb-2">
+      <h5 class="card-title text-center pb-0 fs-4" *ngIf="!data.edit">Add Life Plan</h5>
+      <h5 class="card-title text-center pb-0 fs-4" *ngIf="data.edit">Edit Life Plan</h5>
+      <p class="text-center small" *ngIf="!data.edit">Fill in the fields below to create a new plan</p>
+      <p class="text-center small" *ngIf="data.edit">Some of the fieds cannot be editable </p>
+
+    </div>
+
+    <form class="row g-3 needs-validation" novalidate [formGroup]="form" (ngSubmit)="onSubmit()">
+
+      <div class="col-12">
+        <label for="yourUsername" class="form-label">Policy</label>
+        <div class="input-group has-validation">
+          <select class="form-select" aria-label="Default select example" formControlName="policy">
+            <option value="">Select policy</option>
+            <option *ngFor="let policy of policies" [value]="policy.name">{{policy.name}}-{{policy.amount}}/month</option>
+          </select>
+        </div>
+      </div>
+
+        <div class="col-12">
+          <label for="yourUsername" class="form-label">Beneficiary</label>
+          <div class="input-group has-validation">
+
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Beneficiary</mat-label>
+              <mat-select formControlName="beneficiaryEmail" multiple>
+                <mat-select-trigger>
+                  {{form.value.beneficiaryEmail?.[0] || ''}}
+                  <span *ngIf="(form.value.beneficiaryEmail?.length || 0) > 1" class="example-additional-selection">
+                    (+{{(form.value.beneficiaryEmail?.length || 0) - 1}} {{form.value.beneficiaryEmail?.length === 2 ? 'other' : 'others'}})
+                  </span>
+                </mat-select-trigger>
+                <mat-option *ngFor="let beneficiary of beneficiaries" [value]="beneficiary.email">{{beneficiary.name}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      <div class="col-6">
+        <button class="btn btn-primary w-100 mt-3" type="submit">Submit</button>
+      </div>
+
+      <div class="col-6">
+        <button class="btn btn-outline-danger w-100 mt-3" type="reset" (click)="close()">Close</button>
+      </div>
+
+    </form>
+  </div>
+</div>

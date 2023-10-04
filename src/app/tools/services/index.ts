@@ -6,4 +6,5 @@ export * from './auth.service';
 export * from './user.service';
 export * from './loader.service';
 export * from './policy.service';
-export * from './beneficiary.service'
+export * from './beneficiary.service';
+export * from './plans.service';
